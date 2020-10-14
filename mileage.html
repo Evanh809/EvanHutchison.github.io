@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Calculate Mileage</title>
+        <script>
+        /* Input: Beginning and ending odometer, gallons used
+         * Processing: 
+         *   1. Calculate mileage
+         *   2. Round the mileage to 2 decimal places
+         * Output: Rounded milage in miles per gallon
+         */
+         function calcMpg() {
+            let begOdo = parseFloat(document.getElementById('begOdometerInput').value);
+            let endOdo = parseFloat(document.getElementById('endOdometerInput').value);
+            let miles = endOdo - begOdo;
+            let gallons = parseFloat(document.getElementById('gallonsInput').value);
+
+            let mpg = miles / gallons;
+
+            let digits = 2;
+            let multiplier = Math.pow(10, digits);
+            mpg = Math.round(mpg * multiplier) / multiplier + ' miles per gallon';
+
+            document.getElementById('mpgDiv').innerHTML = mpg;
+         }
+        </script>
+    </head>
+    <body>
+        <p>Please enter the following:
+            <br>Beginning Odometer: <input type="text" id='begOdometerInput'>
+            <br>Ending Odometer: <input type="text" id='endOdometerInput'>
+            <br>Gallons used: <input type="text" id='gallonsInput'>
+        </p>
+        <p><button type="button" onclick="calcMpg()">Enter</button></p>
+        <div id="mpgDiv"></div>
+    </body>
+</html>
